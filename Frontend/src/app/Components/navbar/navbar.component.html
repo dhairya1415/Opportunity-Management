@@ -1,0 +1,15 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+   <div class="container-fluid">
+     <span class="navbar-brand" href="#">Accolite India</span>
+     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+       <span class="navbar-toggler-icon"></span>
+     </button>
+     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+       <div class="navbar-nav">
+         <a class="nav-link" [routerLink]="['/opportunities']" routerLinkActive="active" >Opportunities</a>
+         <a class="nav-link" [routerLink]="['/trends']" routerLinkActive="active" >Trends</a>
+       </div>
+     </div>
+     <button (click)="signOut()">Sign Out</button>
+   </div>
+ </nav>
