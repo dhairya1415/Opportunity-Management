@@ -36,6 +36,13 @@ public class OpportunityController {
 		return list;
 	}
 	
+	@GetMapping(path="get/{id}")
+	public Opportunity getAOpportunity(@PathVariable("id") int id){
+		Opportunity opportunity;
+		opportunity = opportunityDao.getOpportunity(id);
+		return opportunity;
+	}
+	
 	@PostMapping(path="add",produces=MediaType.APPLICATION_JSON_VALUE,consumes = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public int addOpportunity(@RequestBody Opportunity opportunity) {
@@ -43,7 +50,7 @@ public class OpportunityController {
 		return val;
 	}
 	
-	@PutMapping(path="edit/{id}")
+	@PutMapping(path="update/{id}")
 	@ResponseBody
 	public int updateOpportunity(@RequestBody Opportunity opportunity, @PathVariable("id") int id) {
 		int val = opportunityDao.updateOpportunity(opportunity, id);

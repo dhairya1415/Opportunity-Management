@@ -17,8 +17,20 @@ export class OpportunitiesService {
     return this.http.get<Opportunity[]>(`${this.apiServerUrl}/opportunity/getAll`);
   }
 
-  public deleteOpportunities(oppId: number): Observable<number> {
-    return this.http.delete<number>(`${this.apiServerUrl}/opportunity/delete/${oppId}`)
+  public viewOpportunity(oppId: Number): Observable<Opportunity>{
+    return this.http.get<Opportunity>(`${this.apiServerUrl}/opportunity/get/${oppId}`);
+  }
+
+  public deleteOpportunity(oppId: Number): Observable<Number> {
+    return this.http.delete<Number>(`${this.apiServerUrl}/opportunity/delete/${oppId}`)
+  }
+
+  public updateOpportunity(opportunity: Opportunity, oppId: Number): Observable<Number> {
+    return this.http.put<Number>(`${this.apiServerUrl}/opportunity/update/${oppId}`, opportunity)
+  }
+
+  public addOpportunity(opportunity: Opportunity): Observable<Opportunity> {
+    return this.http.post<Opportunity>(`${this.apiServerUrl}/opportunity/add`, opportunity)
   }
 
 }

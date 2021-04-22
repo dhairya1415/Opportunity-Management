@@ -21,6 +21,17 @@ public class OpportunityDaoImpl {
 		return oppList;
 	}
 	
+	public Opportunity getOpportunity(int id){
+		Opportunity opportunity = null;
+		try {
+			String query = "select * from opportunity where oppid="+id;
+			opportunity = jdbcTemplate.queryForObject(query, new OpportunityRowMapper());
+		} catch(Exception e) {
+			
+		}
+		return opportunity;
+	}
+	
 	public int addOpportunity(Opportunity opportunity) {
 		String query = "INSERT INTO opportunity (manager_name, manager_email, description, location, skills, min_exp, demand, joining_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 		int rowsAffected = jdbcTemplate.update(query, new Object[] {opportunity.getManager_name(), opportunity.getManager_email(), opportunity.getDescription(), opportunity.getLocation(), opportunity.getSkills(), opportunity.getMin_exp(), opportunity.getDemand(), opportunity.getJoining_date()});

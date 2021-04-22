@@ -1,0 +1,41 @@
+<app-navbar></app-navbar>
+<h3>Create Opportunity</h3>
+<div class="col-md-6 offset-md-3">
+    <form (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="manager-name">Manager Name</label>
+            <input type="text" name="manager-name" id="manager-name" class="form-control" [(ngModel)]="opportunity.manager_name" />
+        </div>
+        <div class="form-group">
+            <label for="manager-email">Manager Email</label>
+            <input type="text" name="manager_email" id="manager_email" class="form-control" [(ngModel)]="opportunity.manager_email" />
+        </div>
+        <div class="form-group">
+            <label for="description">Description</label>
+            <input type="text" name="description" id="description" class="form-control" [(ngModel)]="opportunity.description" />
+        </div>
+        <div class="form-group">
+            <label for="location">Location</label>
+            <input type="text" name="location" id="location" class="form-control" [(ngModel)]="opportunity.location" />
+        </div>
+        <div class="form-group">
+            <label for="skills">Skills</label>
+            <input type="text" name="skills" id="skills" class="form-control" [(ngModel)]="opportunity.skills" />
+        </div>
+        <div class="form-group">
+            <label for="min_exp">Min Experience</label>
+            <input type="number" name="min_exp" id="min_exp" class="form-control" [(ngModel)]="opportunity.min_exp" />
+        </div>
+        <div class="form-group">
+            <label for="demand">Vacancies</label>
+            <input type="number" name="demand" id="demand" class="form-control" [(ngModel)]="opportunity.demand" />
+        </div>
+        <div class="form-group">
+            <label for="joining_date">Joining Date</label>
+            <input type="date" name="joining_date" id="joining_date" class="form-control" [(ngModel)]="opportunity.joining_date" />
+        </div>
+        <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+</div>
+
+<button class="btn btn-success" (click)="goBackToOpp()">Go bo to Opportunities</button>

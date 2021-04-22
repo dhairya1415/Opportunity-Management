@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree } from '@angular/router';
-import { Observable } from 'rxjs';
+import { CanActivate, Router } from '@angular/router';
 import {SocialAuthService} from 'angularx-social-login';
 
 @Injectable({
@@ -8,13 +7,17 @@ import {SocialAuthService} from 'angularx-social-login';
 })
 export class AuthGuard implements CanActivate {
   
-  constructor(private socialAuthService: SocialAuthService) { }
+  constructor(private socialAuthService: SocialAuthService, private router: Router) { }
 
   loggedIn: boolean = false;
   
   canActivate() {
     this.socialAuthService.authState.subscribe(user => this.loggedIn = (user != null))
-    //return this.loggedIn;
-    return true;
+    if(this.loggedIn){
+      return true;
+    } else{
+      this.router.navigate(['']);
+      return false;
+    }
   }
 }

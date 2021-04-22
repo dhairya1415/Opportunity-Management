@@ -2,6 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Opportunity } from 'src/app/Models/opportunity';
 import { OpportunitiesService } from 'src/app/Services/opportunities.service';
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-opportunities',
@@ -11,13 +12,13 @@ import { OpportunitiesService } from 'src/app/Services/opportunities.service';
 export class OpportunitiesComponent implements OnInit {
 
   public opportunities: Opportunity[] = [];
-  private toggle: boolean = false;
+  public modalVisible: boolean = false;
 
   ngOnInit(): void {
     this.getOpportunities();
   }
 
-  constructor(private opportunitiesService: OpportunitiesService) {}
+  constructor(private opportunitiesService: OpportunitiesService, private router: Router) {}
   
   public getOpportunities(): void {
     this.opportunitiesService.getOpportunities().subscribe(
@@ -29,9 +30,17 @@ export class OpportunitiesComponent implements OnInit {
     );
   }
 
-  public deleteOpportunities(oppId: number): void{
-    this.opportunitiesService.deleteOpportunities(oppId).subscribe(
-      (res: number) => {
+  public getOpportunity(oppId: Number): void{
+    this.router.navigate(['viewOpportunity', oppId])
+  }
+
+  public updateOpportunity(oppId: Number): void{
+    this.router.navigate(['updateOpportunity', oppId])
+  }
+
+  public deleteOpportunity(oppId: number): void{
+    this.opportunitiesService.deleteOpportunity(oppId).subscribe(
+      (res: Number) => {
         if(res){
           this.getOpportunities();
         } else{
@@ -42,6 +51,10 @@ export class OpportunitiesComponent implements OnInit {
         alert(error.message);
       }
     );
+  }
+
+  public addOpportunity(): void{
+    this.router.navigate(['addOpportunity'])
   }
 
   public search(key: string):void{

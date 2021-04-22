@@ -17,6 +17,9 @@ import {AuthGuard} from './Guards/auth.guard';
 import { NavbarComponent } from './Components/navbar/navbar.component'
 import { OpportunitiesService } from './Services/opportunities.service';
 import { TrendsComponent } from './Components/trends/trends.component';
+import { CreateOpportunityComponent } from './Components/create-opportunity/create-opportunity.component';
+import { UpdateOpportunityComponent } from './Components/update-opportunity/update-opportunity.component';
+import { ViewOpportunityComponent } from './Components/view-opportunity/view-opportunity.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,10 @@ import { TrendsComponent } from './Components/trends/trends.component';
     OpportunitiesComponent,
     PageNotFoundComponent,
     NavbarComponent,
-    TrendsComponent
+    TrendsComponent,
+    CreateOpportunityComponent,
+    UpdateOpportunityComponent,
+    ViewOpportunityComponent
   ],
   imports: [
     BrowserModule,

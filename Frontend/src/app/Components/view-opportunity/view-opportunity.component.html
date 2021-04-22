@@ -1,0 +1,14 @@
+<app-navbar></app-navbar>
+<h3>Opportunity Details</h3>
+<div class="col-md-6 offset-md-3">
+    <div><b>Manager Name</b> {{opportunity.manager_name}}</div>
+    <div><b>Manager Email</b> {{opportunity.manager_email}}</div>
+    <div><b>Description</b> {{opportunity.description}}</div>
+    <div><b>Location</b> {{opportunity.location}}</div>
+    <div><b>Skills</b> {{opportunity.skills}}</div>
+    <div><b>Min Experience</b> {{opportunity.min_exp}}</div>
+    <div><b>Vacancies</b> {{opportunity.demand}}</div>
+    <div><b>Joining Date</b> {{opportunity.joining_date}}</div>
+</div>
+
+<button class="btn btn-success" (click)="goBackToOpp()">Go bo to Opportunities</button>
