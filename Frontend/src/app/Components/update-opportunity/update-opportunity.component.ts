@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { OpportunitiesService } from 'src/app/Services/opportunities.service';
+import { SocialAuthService } from 'angularx-social-login';
 import { Router, ActivatedRoute } from '@angular/router'
 import { Opportunity } from 'src/app/Models/opportunity';
 
@@ -12,8 +13,10 @@ export class UpdateOpportunityComponent implements OnInit {
 
   public  opportunity:Opportunity = <any>{};
   public oppId: Number = <any>{};
+  public name: string = "";
+  public email: string = "";
 
-  constructor(private opportunitiesService: OpportunitiesService, private router: Router, private route: ActivatedRoute) {}
+  constructor(private socialAuthService: SocialAuthService, private opportunitiesService: OpportunitiesService, private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.oppId = this.route.snapshot.params['oppId'];
@@ -21,10 +24,16 @@ export class UpdateOpportunityComponent implements OnInit {
       res => this.opportunity = res,
       error => alert(error.message)
     );
+    this.socialAuthService.authState.subscribe(
+      user => {
+        this.name = user.name,
+        this.email = user.email
+      }
+    );
   }
 
   public saveOpportunity(): void{
-    this.opportunitiesService.updateOpportunity(this.opportunity, this.oppId).subscribe(
+    this.opportunitiesService.updateOpportunity(this.opportunity, this.oppId, this.name, this.email).subscribe(
       (res) => {
         console.log(res),
         this.goBackToOpp();

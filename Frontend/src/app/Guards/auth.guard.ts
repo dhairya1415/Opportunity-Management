@@ -12,12 +12,15 @@ export class AuthGuard implements CanActivate {
   loggedIn: boolean = false;
   
   canActivate() {
-    this.socialAuthService.authState.subscribe(user => this.loggedIn = (user != null))
+    this.socialAuthService.authState.subscribe(user => {
+      this.loggedIn = (user != null);
+    });
     if(this.loggedIn){
       return true;
     } else{
       this.router.navigate(['']);
       return false;
     }
+    //return true;
   }
 }

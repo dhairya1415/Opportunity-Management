@@ -9,6 +9,8 @@ public interface OpportunityDao {
 	
 	Opportunity getOpportunity(int id);
 	
+	Opportunity getLastOpportunity();
+	
 	int addOpportunity(Opportunity opportunity);
 
     int deleteOpportunity(int id);

@@ -7,6 +7,7 @@ import {TrendsComponent} from './Components/trends/trends.component'
 import {CreateOpportunityComponent} from './Components/create-opportunity/create-opportunity.component'
 import {ViewOpportunityComponent} from './Components/view-opportunity/view-opportunity.component'
 import {UpdateOpportunityComponent} from './Components/update-opportunity/update-opportunity.component'
+import {AuditComponent} from './Components/audit/audit.component'
 import {AuthGuard} from './Guards/auth.guard'
 
 const routes: Routes = [
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path:'viewOpportunity/:oppId', component : ViewOpportunityComponent, canActivate:[AuthGuard]},
   {path:'updateOpportunity/:oppId', component : UpdateOpportunityComponent, canActivate:[AuthGuard]},
   {path:'trends', component : TrendsComponent, canActivate:[AuthGuard]},
+  {path:'audit', component : AuditComponent, canActivate:[AuthGuard]},
   {path: '**' , component:PageNotFoundComponent}
 ];
 

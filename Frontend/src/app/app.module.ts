@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
+import { HighchartsChartModule } from 'highcharts-angular';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './Components/login/login.component';
@@ -20,6 +21,7 @@ import { TrendsComponent } from './Components/trends/trends.component';
 import { CreateOpportunityComponent } from './Components/create-opportunity/create-opportunity.component';
 import { UpdateOpportunityComponent } from './Components/update-opportunity/update-opportunity.component';
 import { ViewOpportunityComponent } from './Components/view-opportunity/view-opportunity.component';
+import { AuditComponent } from './Components/audit/audit.component';
 
 @NgModule({
   declarations: [
@@ -31,14 +33,16 @@ import { ViewOpportunityComponent } from './Components/view-opportunity/view-opp
     TrendsComponent,
     CreateOpportunityComponent,
     UpdateOpportunityComponent,
-    ViewOpportunityComponent
+    ViewOpportunityComponent,
+    AuditComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     SocialLoginModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    HighchartsChartModule
   ],
   providers: [
     {

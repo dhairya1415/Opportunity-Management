@@ -1,14 +1,40 @@
 <app-navbar></app-navbar>
 <h3>Opportunity Details</h3>
 <div class="col-md-6 offset-md-3">
-    <div><b>Manager Name</b> {{opportunity.manager_name}}</div>
-    <div><b>Manager Email</b> {{opportunity.manager_email}}</div>
-    <div><b>Description</b> {{opportunity.description}}</div>
-    <div><b>Location</b> {{opportunity.location}}</div>
-    <div><b>Skills</b> {{opportunity.skills}}</div>
-    <div><b>Min Experience</b> {{opportunity.min_exp}}</div>
-    <div><b>Vacancies</b> {{opportunity.demand}}</div>
-    <div><b>Joining Date</b> {{opportunity.joining_date}}</div>
+    <form>
+        <div class="form-group">
+            <label for="manager-name">Manager Name</label>
+            <input type="text" name="manager-name" id="manager-name" class="form-control" [(ngModel)]="opportunity.manager_name" readonly/>
+        </div>
+        <div class="form-group">
+            <label for="manager-email">Manager Email</label>
+            <input type="text" name="manager_email" id="manager_email" class="form-control" [(ngModel)]="opportunity.manager_email" readonly/>
+        </div>
+        <div class="form-group">
+            <label for="description">Description</label>
+            <input type="text" name="description" id="description" class="form-control" [(ngModel)]="opportunity.description" readonly/>
+        </div>
+        <div class="form-group">
+            <label for="location">Location</label>
+            <input type="text" name="location" id="location" class="form-control" [(ngModel)]="opportunity.location" readonly/>
+        </div>
+        <div class="form-group">
+            <label for="skills">Skills</label>
+            <input type="text" name="skills" id="skills" class="form-control" [(ngModel)]="opportunity.skills" readonly/>
+        </div>
+        <div class="form-group">
+            <label for="min_exp">Min Experience</label>
+            <input type="number" name="min_exp" id="min_exp" class="form-control" [(ngModel)]="opportunity.min_exp" readonly/>
+        </div>
+        <div class="form-group">
+            <label for="demand">Vacancies</label>
+            <input type="number" name="demand" id="demand" class="form-control" [(ngModel)]="opportunity.demand" readonly/>
+        </div>
+        <div class="form-group">
+            <label for="joining_date">Joining Date</label>
+            <input type="date" name="joining_date" id="joining_date" class="form-control" [(ngModel)]="opportunity.joining_date" readonly/>
+        </div>
+    </form>
 </div>
 
-<button class="btn btn-success" (click)="goBackToOpp()">Go bo to Opportunities</button>
+<button class="btn btn-success" (click)="goBackToOpp()">Go back to Opportunities</button>

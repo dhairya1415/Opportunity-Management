@@ -93,9 +93,9 @@ public class Opportunity {
 	//Override toString
 	@Override
 	public String toString() {
-		return "Opportunity [oppid=" + oppid + ", manager_name=" + manager_name + ", manager_email=" + manager_email
-				+ ", description=" + description + ", location=" + location + ", skills=" + skills + ", min_exp="
-				+ min_exp + ", demand=" + demand + ", joining_date=" + joining_date + "]";
+		return "Oppid:" + oppid + ", Manager Name:" + manager_name + ", Manager Email:" + manager_email
+				+ ", Description:" + description + ", Location:" + location + ", Skills:" + skills + ", Min Exp:"
+				+ min_exp + ", Demand:" + demand + ", Joining Date:" + joining_date;
 	}
 	
 }

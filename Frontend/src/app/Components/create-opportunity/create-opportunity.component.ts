@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { OpportunitiesService } from 'src/app/Services/opportunities.service';
+import { SocialAuthService } from 'angularx-social-login';
 import { Router } from '@angular/router'
 import { Opportunity } from 'src/app/Models/opportunity';
 
@@ -10,15 +11,23 @@ import { Opportunity } from 'src/app/Models/opportunity';
 })
 export class CreateOpportunityComponent implements OnInit {
 
-  public  opportunity:Opportunity = <any>{};
+  public opportunity:Opportunity = <any>{};
+  public name: string = "";
+  public email: string = "";
 
-  constructor(private opportunitiesService: OpportunitiesService, private router: Router) {}
+  constructor(private socialAuthService: SocialAuthService, private opportunitiesService: OpportunitiesService, private router: Router) {}
 
   ngOnInit(): void {
+    this.socialAuthService.authState.subscribe(
+      user => {
+        this.name = user.name,
+        this.email = user.email
+      }
+    );
   }
 
   public saveOpportunity(): void{
-    this.opportunitiesService.addOpportunity(this.opportunity).subscribe(
+    this.opportunitiesService.addOpportunity(this.opportunity, this.name, this.email).subscribe(
       (res) => {
         console.log(res),
         this.goBackToOpp();

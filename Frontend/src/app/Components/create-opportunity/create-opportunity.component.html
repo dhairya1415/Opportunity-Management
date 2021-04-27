@@ -8,7 +8,7 @@
         </div>
         <div class="form-group">
             <label for="manager-email">Manager Email</label>
-            <input type="text" name="manager_email" id="manager_email" class="form-control" [(ngModel)]="opportunity.manager_email" />
+            <input type="email" name="manager_email" id="manager_email" class="form-control" [(ngModel)]="opportunity.manager_email" />
         </div>
         <div class="form-group">
             <label for="description">Description</label>
@@ -38,4 +38,4 @@
     </form>
 </div>
 
-<button class="btn btn-success" (click)="goBackToOpp()">Go bo to Opportunities</button>
+<button class="btn btn-success" (click)="goBackToOpp()">Go back to Opportunities</button>

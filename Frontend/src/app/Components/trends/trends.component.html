@@ -1,3 +1,19 @@
 <app-navbar></app-navbar>
 
-<h1>Trends Working</h1>
+<div *ngIf="locationFlag" class="container">
+    <highcharts-chart 
+        [Highcharts]="HighchartsLocations"
+        [options]="chartOptionsLocations"
+        style="height: 400px; display: block;"
+    ></highcharts-chart>
+</div>
+
+<div *ngIf="skillsFlag" class="container">
+    <highcharts-chart 
+        [Highcharts]="HighchartsSkills"
+        [options]="chartOptionsSkills"
+        style="height: 400px; display: block;"
+    ></highcharts-chart>
+</div>
+
+<h1 *ngIf="locationFlag && skillsFlag">Trends Working</h1>
