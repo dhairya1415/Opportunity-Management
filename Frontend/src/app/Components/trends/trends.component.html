@@ -8,7 +8,7 @@
     ></highcharts-chart>
 </div>
 
-<div *ngIf="skillsFlag" class="container">
+<div *ngIf="skillFlag" class="container">
     <highcharts-chart 
         [Highcharts]="HighchartsSkills"
         [options]="chartOptionsSkills"
@@ -16,4 +16,12 @@
     ></highcharts-chart>
 </div>
 
-<h1 *ngIf="locationFlag && skillsFlag">Trends Working</h1>
+<div *ngIf="quarterFlag" class="container">
+    <highcharts-chart 
+        [Highcharts]="HighchartsQuarters"
+        [options]="chartOptionsQuarters"
+        style="height: 400px; display: block;"
+    ></highcharts-chart>
+</div>
+
+<h1 *ngIf="locationFlag && skillFlag && quarterFlag">Trends Working</h1>

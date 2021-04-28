@@ -13,7 +13,11 @@ export class AuditService {
   
   constructor(private http: HttpClient) { }
 
-  public getAudits(): Observable<Audit[]> {
+  public getAllAudits(): Observable<Audit[]> {
     return this.http.get<Audit[]>(`${this.apiServerUrl}/audit/getAll`);
+  }
+
+  public getAuditsById(oppId: number): Observable<Audit[]> {
+    return this.http.get<Audit[]>(`${this.apiServerUrl}/audit/get/${oppId}`);
   }
 }

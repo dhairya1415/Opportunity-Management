@@ -18,7 +18,14 @@ export class AuditComponent implements OnInit {
   }
 
   public getAllAudits(): void{
-    this.auditService.getAudits().subscribe(
+    this.auditService.getAllAudits().subscribe(
+      (res: Audit[]) => this.audits = res,
+      error => alert(error.message)
+    );
+  }
+
+  public getAuditsById(oppId: number): void{
+    this.auditService.getAuditsById(oppId).subscribe(
       (res: Audit[]) => this.audits = res,
       error => alert(error.message)
     );
