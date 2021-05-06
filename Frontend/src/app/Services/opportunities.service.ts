@@ -20,6 +20,22 @@ export class OpportunitiesService {
     return this.http.get<Opportunity[]>(`${this.apiServerUrl}/opportunity/getAll`);
   }
 
+  public getActiveOpportunities(): Observable <Opportunity[]> {
+    return this.http.get<Opportunity[]>(`${this.apiServerUrl}/opportunity/getActive`);
+  }
+
+  public searchOpportunities(options: string): Observable <Opportunity[]> {
+    return this.http.get<Opportunity[]>(`${this.apiServerUrl}/opportunity/search/${options}`);
+  }
+
+  public getLocations(): Observable <string[]> {
+    return this.http.get<string[]>(`${this.apiServerUrl}/opportunity/getLocations`);
+  }
+
+  public getSkills(): Observable <string[]> {
+    return this.http.get<string[]>(`${this.apiServerUrl}/opportunity/getSkills`);
+  }
+
   public viewOpportunity(oppId: Number): Observable<Opportunity>{
     return this.http.get<Opportunity>(`${this.apiServerUrl}/opportunity/get/${oppId}`);
   }

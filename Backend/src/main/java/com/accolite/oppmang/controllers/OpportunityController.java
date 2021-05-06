@@ -1,8 +1,8 @@
 package com.accolite.oppmang.controllers;
 import java.util.List;
 import org.springframework.http.MediaType;
+
 import java.util.ArrayList;
-import org.springframework.web.bind.annotation.RestController;
 
 import com.accolite.oppmang.exception.DetailsNotFound;
 import com.accolite.oppmang.dao.AuditDaoImpl;
@@ -22,24 +22,19 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(path="/opportunity")
 public class OpportunityController {
 	
 	@Autowired
-	OpportunityDaoImpl opportunityDao;
-	
-	@Autowired
 	AuditDaoImpl auditDao;
 	
-	private static final Logger logger = LoggerFactory.getLogger(OpportunityController.class);
+	@Autowired
+	OpportunityDaoImpl opportunityDao;
 	
-	@GetMapping(path="/")
-	public String check() {
-		logger.info("****Check method Opportunity Controller****");
-		return "<h1>Welcome to Opportunity Management Backend App</h1>";
-	}
+	private static final Logger logger = LoggerFactory.getLogger(OpportunityController.class);
 	
 	@GetMapping(path="getAll")
 	public List <Opportunity> getAllOpportunities(){
@@ -47,6 +42,62 @@ public class OpportunityController {
 		List <Opportunity> list = new ArrayList<>();
 		try {
 			list = opportunityDao.getAllOpportunities();
+		} catch (DetailsNotFound e) {
+			// TODO Auto-generated catch block
+			//e.printStackTrace();
+			logger.error("DetailsNotFound Opportunity Controller");
+		}
+		return list;
+	}
+	
+	@GetMapping(path="getActive")
+	public List <Opportunity> getActiveOpportunities(){
+		logger.info("****getActiveOpportunities method Opportunity Controller****");
+		List <Opportunity> list = new ArrayList<>();
+		try {
+			list = opportunityDao.getActiveOpportunities();
+		} catch (DetailsNotFound e) {
+			// TODO Auto-generated catch block
+			//e.printStackTrace();
+			logger.error("DetailsNotFound Opportunity Controller");
+		}
+		return list;
+	}
+	
+	@GetMapping(path="search/{options}")
+	public List <Opportunity> searchOpportunities(@PathVariable("options") String options){
+		logger.info("****getAllOpportunities method Opportunity Controller****");
+		List <Opportunity> list = new ArrayList<>();
+		try {
+			list = opportunityDao.searchOpportunities(options);
+		} catch (DetailsNotFound e) {
+			// TODO Auto-generated catch block
+			//e.printStackTrace();
+			logger.error("DetailsNotFound Opportunity Controller");
+		}
+		return list;
+	}
+	
+	@GetMapping(path="getLocations")
+	public List <String> getLocations(){
+		logger.info("****getLocations method Opportunity Controller****");
+		List <String> list = new ArrayList<>();
+		try {
+			list = opportunityDao.getLocations();
+		} catch (DetailsNotFound e) {
+			// TODO Auto-generated catch block
+			//e.printStackTrace();
+			logger.error("DetailsNotFound Opportunity Controller");
+		}
+		return list;
+	}
+	
+	@GetMapping(path="getSkills")
+	public List <String> getSkills(){
+		logger.info("****getLocations method Opportunity Controller****");
+		List <String> list = new ArrayList<>();
+		try {
+			list = opportunityDao.getSkills();
 		} catch (DetailsNotFound e) {
 			// TODO Auto-generated catch block
 			//e.printStackTrace();

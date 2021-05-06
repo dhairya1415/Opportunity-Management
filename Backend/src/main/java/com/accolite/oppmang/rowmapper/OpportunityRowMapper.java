@@ -21,6 +21,7 @@ public class OpportunityRowMapper implements RowMapper<Opportunity>{
 		opportunity.setSkills(rs.getString("skills"));
 		opportunity.setMin_exp(rs.getInt("min_exp"));
 		opportunity.setJoining_date(rs.getDate("joining_date").toLocalDate());
+		opportunity.setDeleted(rs.getBoolean("deleted"));
 		return opportunity;
 	}
 

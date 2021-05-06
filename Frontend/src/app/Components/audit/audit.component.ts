@@ -10,6 +10,8 @@ import { AuditService } from '../../Services/audit.service';
 export class AuditComponent implements OnInit {
 
   public audits: Audit[] = [];
+  public key: string = "";
+  public value: string = "";
   
   constructor(private auditService: AuditService) { }
 
@@ -24,11 +26,22 @@ export class AuditComponent implements OnInit {
     );
   }
 
-  public getAuditsById(oppId: number): void{
-    this.auditService.getAuditsById(oppId).subscribe(
+  public searchAudits(key: string, value: string): void{
+    // console.log(key, value);
+    this.auditService.searchAudits(key, value).subscribe(
       (res: Audit[]) => this.audits = res,
       error => alert(error.message)
     );
+  }
+
+  public onSubmit(): void{
+    this.searchAudits(this.key, this.value);
+  }
+
+  public resetSearch(): void{
+    this.key = "";
+    this.value = "";
+    this.getAllAudits();
   }
 
 }

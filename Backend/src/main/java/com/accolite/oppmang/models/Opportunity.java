@@ -13,6 +13,7 @@ public class Opportunity {
 	private String skills;
 	private int min_exp;
 	private int demand;
+	private boolean deleted;
 	@JsonFormat(pattern="yyyy-MM-dd")
 	private LocalDate joining_date;
 	
@@ -96,6 +97,12 @@ public class Opportunity {
 		return "Oppid:" + oppid + ", Manager Name:" + manager_name + ", Manager Email:" + manager_email
 				+ ", Description:" + description + ", Location:" + location + ", Skills:" + skills + ", Min Exp:"
 				+ min_exp + ", Demand:" + demand + ", Joining Date:" + joining_date;
+	}
+	public boolean isDeleted() {
+		return deleted;
+	}
+	public void setDeleted(boolean deleted) {
+		this.deleted = deleted;
 	}
 	
 }

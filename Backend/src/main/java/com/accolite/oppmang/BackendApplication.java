@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
-@SpringBootApplication
+@SpringBootApplication()
 public class BackendApplication {
 
 	private static final Logger logger = LoggerFactory.getLogger(BackendApplication.class); 

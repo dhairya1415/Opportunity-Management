@@ -14,6 +14,7 @@ export class CreateOpportunityComponent implements OnInit {
   public opportunity:Opportunity = <any>{};
   public name: string = "";
   public email: string = "";
+  public currentDate: any = new Date().toISOString().slice(0, 10);
 
   constructor(private socialAuthService: SocialAuthService, private opportunitiesService: OpportunitiesService, private router: Router) {}
 

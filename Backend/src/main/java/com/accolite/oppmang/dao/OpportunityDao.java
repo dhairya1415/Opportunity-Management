@@ -2,14 +2,23 @@ package com.accolite.oppmang.dao;
 
 import java.util.List;
 
+import com.accolite.oppmang.exception.DetailsNotFound;
 import com.accolite.oppmang.models.Opportunity;
 
 public interface OpportunityDao {
-	List <Opportunity> getAllOpportunities();
+	List <Opportunity> getAllOpportunities() throws DetailsNotFound;
 	
-	Opportunity getOpportunity(int id);
+	List <Opportunity> getActiveOpportunities() throws DetailsNotFound;
 	
-	Opportunity getLastOpportunity();
+	List <Opportunity> searchOpportunities(String options) throws DetailsNotFound;
+	
+	List <String> getLocations() throws DetailsNotFound;
+	
+	List <String> getSkills() throws DetailsNotFound;
+	
+	Opportunity getOpportunity(int id) throws DetailsNotFound;
+	
+	Opportunity getLastOpportunity() throws DetailsNotFound;
 	
 	int addOpportunity(Opportunity opportunity);
 

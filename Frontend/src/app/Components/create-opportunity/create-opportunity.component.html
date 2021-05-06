@@ -1,38 +1,101 @@
 <app-navbar></app-navbar>
 <h3>Create Opportunity</h3>
 <div class="col-md-6 offset-md-3">
-    <form (ngSubmit)="onSubmit()">
+    <form (ngSubmit)="onSubmit()" ngNativeValidate>
         <div class="form-group">
-            <label for="manager-name">Manager Name</label>
-            <input type="text" name="manager-name" id="manager-name" class="form-control" [(ngModel)]="opportunity.manager_name" />
+            <label class="label" for="manager_name">Manager Name</label>
+            <input type="text" name="manager_name" id="manager_name" class="form-control" 
+            [(ngModel)]="opportunity.manager_name" #manager_name="ngModel" minlength="4" maxlength="40" required/>
+            <div *ngIf="manager_name.invalid && (manager_name.dirty || manager_name.touched)" class="alert alert-danger">
+                <div *ngIf="manager_name.errors?.required">
+                    Manager Name is required.
+                </div>
+                <div *ngIf="manager_name.errors?.minlength || manager_name.errors?.maxlength">
+                    Manager Name must be between 4 to 40 characters long.
+                </div>
+            </div>
         </div>
         <div class="form-group">
-            <label for="manager-email">Manager Email</label>
-            <input type="email" name="manager_email" id="manager_email" class="form-control" [(ngModel)]="opportunity.manager_email" />
+            <label class="label" for="manager-email">Manager Email</label>
+            <input type="email" name="manager_email" id="manager_email" class="form-control" 
+            [(ngModel)]="opportunity.manager_email" #manager_email="ngModel" minlength="4" maxlength="40" required/>
+            <div *ngIf="manager_email.invalid && (manager_email.dirty || manager_email.touched)" class="alert alert-danger">
+                <div *ngIf="manager_email.errors?.required">
+                    Manager Email is required.
+                </div>
+                <div *ngIf="manager_email.errors?.minlength || manager_email.errors?.maxlength">
+                    Manager Email must be between 4 to 40 characters long.
+                </div>
+            </div>
         </div>
         <div class="form-group">
-            <label for="description">Description</label>
-            <input type="text" name="description" id="description" class="form-control" [(ngModel)]="opportunity.description" />
+            <label class="label" for="description">Description</label>
+            <input type="text" name="description" id="description" class="form-control" 
+            [(ngModel)]="opportunity.description" #description="ngModel" minlength="4" maxlength="40" required/>
+            <div *ngIf="description.invalid && (description.dirty || description.touched)" class="alert alert-danger">
+                <div *ngIf="description.errors?.required">
+                    Description is required.
+                </div>
+                <div *ngIf="description.errors?.minlength || description.errors?.maxlength">
+                    Description must be between 4 to 40 characters long.
+                </div>
+            </div>
         </div>
         <div class="form-group">
-            <label for="location">Location</label>
-            <input type="text" name="location" id="location" class="form-control" [(ngModel)]="opportunity.location" />
+            <label class="label" for="location">Location</label>
+            <input type="text" name="location" id="location" class="form-control" 
+            [(ngModel)]="opportunity.location" #location="ngModel" minlength="4" maxlength="40" required/>
+            <div *ngIf="location.invalid && (location.dirty || location.touched)" class="alert alert-danger">
+                <div *ngIf="location.errors?.required">
+                    Location is required.
+                </div>
+                <div *ngIf="location.errors?.minlength || location.errors?.maxlength">
+                    Location must be between 4 to 40 characters long.
+                </div>
+            </div>
         </div>
         <div class="form-group">
-            <label for="skills">Skills</label>
-            <input type="text" name="skills" id="skills" class="form-control" [(ngModel)]="opportunity.skills" />
+            <label class="label" for="skills">Skills</label>
+            <input type="text" name="skills" id="skills" class="form-control" 
+            [(ngModel)]="opportunity.skills" #skills="ngModel" minlength="1" maxlength="40" required/>
+            <div *ngIf="skills.invalid && (skills.dirty || skills.touched)" class="alert alert-danger">
+                <div *ngIf="skills.errors?.required">
+                    Skills is required.
+                </div>
+                <div *ngIf="skills.errors?.minlength || skills.errors?.maxlength">
+                    Skills must be between 1 to 40 characters long.
+                </div>
+            </div>
         </div>
         <div class="form-group">
-            <label for="min_exp">Min Experience</label>
-            <input type="number" name="min_exp" id="min_exp" class="form-control" [(ngModel)]="opportunity.min_exp" />
+            <label class="label" for="min_exp">Min Experience</label>
+            <input type="number" name="min_exp" id="min_exp" class="form-control" 
+            [(ngModel)]="opportunity.min_exp" #min_exp="ngModel" min="0" max="100" required/>
+            <div *ngIf="min_exp.invalid && (min_exp.dirty || min_exp.touched)" class="alert alert-danger">
+                <div *ngIf="min_exp.errors?.required">
+                    Min Exp field is required.
+                </div>
+            </div>
         </div>
         <div class="form-group">
-            <label for="demand">Vacancies</label>
-            <input type="number" name="demand" id="demand" class="form-control" [(ngModel)]="opportunity.demand" />
+            <label class="label" for="demand">Vacancies</label>
+            <input type="number" name="demand" id="demand" class="form-control" 
+            [(ngModel)]="opportunity.demand" #demand="ngModel" min="1" max="100" required/>
+            <div *ngIf="demand.invalid && (demand.dirty || demand.touched)" class="alert alert-danger">
+                <div *ngIf="demand.errors?.required">
+                    Demand is required.
+                </div>
+            </div>
         </div>
         <div class="form-group">
-            <label for="joining_date">Joining Date</label>
-            <input type="date" name="joining_date" id="joining_date" class="form-control" [(ngModel)]="opportunity.joining_date" />
+            <label class="label" for="joining_date">Joining Date</label>
+            <input type="date" name="joining_date" id="joining_date" class="form-control" 
+            [(ngModel)]="opportunity.joining_date" #date="ngModel" min="{{currentDate}}" required/>
+            <div *ngIf="date.invalid && (date.dirty || date.touched)" class="alert alert-danger">
+                <div *ngIf="date.errors?.required">
+                    Joining date is required.
+                </div>
+            </div>
         </div>
         <button type="submit" class="btn btn-success">Submit</button>
     </form>

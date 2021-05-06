@@ -17,7 +17,7 @@ export class AuditService {
     return this.http.get<Audit[]>(`${this.apiServerUrl}/audit/getAll`);
   }
 
-  public getAuditsById(oppId: number): Observable<Audit[]> {
-    return this.http.get<Audit[]>(`${this.apiServerUrl}/audit/get/${oppId}`);
+  public searchAudits(key: string, value: string): Observable<Audit[]> {
+    return this.http.get<Audit[]>(`${this.apiServerUrl}/audit/search/${key}/${value}`);
   }
 }

@@ -1,27 +1,54 @@
 <app-navbar></app-navbar>
 
-<div *ngIf="locationFlag" class="container">
-    <highcharts-chart 
-        [Highcharts]="HighchartsLocations"
-        [options]="chartOptionsLocations"
-        style="height: 400px; display: block;"
-    ></highcharts-chart>
+<div class="row" style="width: 100%;">
+    <div class="col-md-6">
+        <h3 style="margin: auto;">Active Trends</h3>
+        <div *ngIf="locationCountFlag" class="container">
+            <highcharts-chart 
+                [Highcharts]="HighchartsLocationCount"
+                [options]="chartOptionsLocationCount"
+                style="height: 400px; display: block;"
+            ></highcharts-chart>
+        </div>
+        <div *ngIf="skillCountFlag" class="container">
+            <highcharts-chart 
+                [Highcharts]="HighchartsSkillsCount"
+                [options]="chartOptionsSkillsCount"
+                style="height: 400px; display: block;"
+            ></highcharts-chart>
+        </div>
+        <div *ngIf="locationSkillsFlag" class="container">
+            <highcharts-chart 
+                [Highcharts]="HighchartsLocationSkills"
+                [options]="chartOptionsLocationSkills"
+                style="height: 400px; display: block;"
+            ></highcharts-chart>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <h3 style="align-self: center;">Year wise Trends</h3>
+        <div *ngIf="locationFlag" class="container">
+            <highcharts-chart 
+                [Highcharts]="HighchartsLocations"
+                [options]="chartOptionsLocations"
+                style="height: 400px; display: block;"
+            ></highcharts-chart>
+        </div>
+        
+        <div *ngIf="skillFlag" class="container">
+            <highcharts-chart 
+                [Highcharts]="HighchartsSkills"
+                [options]="chartOptionsSkills"
+                style="height: 400px; display: block;"
+            ></highcharts-chart>
+        </div>
+        
+        <div *ngIf="quarterFlag" class="container">
+            <highcharts-chart 
+                [Highcharts]="HighchartsQuarters"
+                [options]="chartOptionsQuarters"
+                style="height: 400px; display: block;"
+            ></highcharts-chart>
+        </div>
+    </div>
 </div>
-
-<div *ngIf="skillFlag" class="container">
-    <highcharts-chart 
-        [Highcharts]="HighchartsSkills"
-        [options]="chartOptionsSkills"
-        style="height: 400px; display: block;"
-    ></highcharts-chart>
-</div>
-
-<div *ngIf="quarterFlag" class="container">
-    <highcharts-chart 
-        [Highcharts]="HighchartsQuarters"
-        [options]="chartOptionsQuarters"
-        style="height: 400px; display: block;"
-    ></highcharts-chart>
-</div>
-
-<h1 *ngIf="locationFlag && skillFlag && quarterFlag">Trends Working</h1>

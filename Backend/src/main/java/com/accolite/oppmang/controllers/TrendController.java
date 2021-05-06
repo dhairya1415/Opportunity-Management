@@ -1,5 +1,8 @@
 package com.accolite.oppmang.controllers;
 
+import java.util.List;
+import java.util.ArrayList;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,21 +45,27 @@ public class TrendController {
 		return locationTrends;
 	}
 	
-	@GetMapping(path="yearCount")
-	public int yearCount(){
-		logger.info("****yearCount method Trend Controller****");
-		return trendDao.getYearCount();
+	@GetMapping(path="locationSkills")
+	public Trend locationSkillsTrends(){
+		logger.info("****locationSkillsTrends method Trend Controller****");
+		Trend locationSkills = new Trend();
+		locationSkills = trendDao.locationSkillsTrends();
+		return locationSkills;
 	}
 	
 	@GetMapping(path="locationCount")
-	public int locationCount(){
-		logger.info("****yearCount method Trend Controller****");
-		return trendDao.getLocationCount();
+	public List < List <?> > locationCount(){
+		logger.info("****locationCount method Trend Controller****");
+		List < List <?> > locationCount = new ArrayList<>();
+		locationCount = trendDao.locationCount();
+		return locationCount;
 	}
 	
 	@GetMapping(path="skillCount")
-	public int skillCount(){
-		logger.info("****yearCount method Trend Controller****");
-		return trendDao.getSkillCount();
+	public List < List <?> > skillCount(){
+		logger.info("****skillCount method Trend Controller****");
+		List < List <?> > skillCount = new ArrayList<>();
+		skillCount = trendDao.skillCount();
+		return skillCount;
 	}
 }

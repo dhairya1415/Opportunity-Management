@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {HttpClientModule} from '@angular/common/http';
-import {FormsModule} from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { HighchartsChartModule } from 'highcharts-angular';
 
@@ -17,11 +17,14 @@ import { PageNotFoundComponent } from './Components/page-not-found/page-not-foun
 import {AuthGuard} from './Guards/auth.guard';
 import { NavbarComponent } from './Components/navbar/navbar.component'
 import { OpportunitiesService } from './Services/opportunities.service';
+import { AuditService } from './Services/audit.service';
+import { TrendsService } from './Services/trends.service';
 import { TrendsComponent } from './Components/trends/trends.component';
 import { CreateOpportunityComponent } from './Components/create-opportunity/create-opportunity.component';
 import { UpdateOpportunityComponent } from './Components/update-opportunity/update-opportunity.component';
 import { ViewOpportunityComponent } from './Components/view-opportunity/view-opportunity.component';
 import { AuditComponent } from './Components/audit/audit.component';
+import { AllOpportunitiesComponent } from './Components/all-opportunities/all-opportunities.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +37,8 @@ import { AuditComponent } from './Components/audit/audit.component';
     CreateOpportunityComponent,
     UpdateOpportunityComponent,
     ViewOpportunityComponent,
-    AuditComponent
+    AuditComponent,
+    AllOpportunitiesComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +62,9 @@ import { AuditComponent } from './Components/audit/audit.component';
       } as SocialAuthServiceConfig,
     }, 
     AuthGuard,
-    OpportunitiesService
+    OpportunitiesService,
+    AuditService,
+    TrendsService
   ],
   bootstrap: [AppComponent]
 })

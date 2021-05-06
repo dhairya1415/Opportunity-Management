@@ -7,5 +7,6 @@ export interface Opportunity {
     skills: string,
     min_exp: number,
     demand: number,
-    joining_date: Date
+    joining_date: Date,
+    deleted: boolean
 }
